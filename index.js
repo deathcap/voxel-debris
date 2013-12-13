@@ -56,19 +56,19 @@ module.exports = function (game, opts) {
 
 function createDebris (game, pos, value) {
     var mesh = new game.THREE.Mesh(
-        new game.THREE.CubeGeometry(4, 4, 4),
-        game.material
+        new game.THREE.CubeGeometry(0.25, 0.25, 0.25),
+        game.materials.materials[0]
     );
     mesh.geometry.faces.forEach(function (face) {
         face.materialIndex = value - 1
     });
-    mesh.translateX(pos.x);
-    mesh.translateY(pos.y);
-    mesh.translateZ(pos.z);
+    mesh.translateX(pos[0]);
+    mesh.translateY(pos[1]);
+    mesh.translateZ(pos[2]);
     
     return {
         mesh: mesh,
-        size: 4,
+        size: 0.25,
         collisionRadius: 22,
         value: value,
         _debris: true,
